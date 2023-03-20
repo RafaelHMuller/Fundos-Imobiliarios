@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # In[21]:
 
 
@@ -20,8 +17,6 @@ from datetime import datetime
 import time
 from PIL import Image
 import pyautogui as gui
-
-#from pathlib import Path
 import os
 
 
