@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 # In[21]:
-# alterações feitas no github online pela nova branch, não na main branch
+
 
 #1 -importar as bibliotecas
 from selenium import webdriver
@@ -9,7 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 servico = Service(ChromeDriverManager().install())
 options = webdriver.ChromeOptions()
-options.add_argument('--headless') # modo headless 
+options.add_argument('--headless') # modo headless
 
 import pandas as pd
 import win32com.client as win32
