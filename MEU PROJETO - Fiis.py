@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Meu Projeto Fundos Imobiliários
-
 # In[4]:
 
 
@@ -169,19 +164,12 @@ e.HTMLBody = f'''
 <p>Valor total atual da carteira:<strong> R$ {valor_total:,.2f}</strong></p>
 <p>Valor total de dividendos esperado por mês:<strong> R$ {dividendos_total:,.2f}</strong></p>
 '''
+
 path = r'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\gráficos cotações'
 lista_arquivos = os.listdir(path)
-#pasta_imagens = Path(r'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\gráficos cotações')
 for arquivo in lista_arquivos:
     caminho_anexo = fr"{local}\gráficos cotações\{arquivo}"
     e.Attachments.Add(str(caminho_anexo)) 
 e.Send()
 
 gui.alert('FIM DA AUTOMAÇÃO :D')
-
-
-# In[ ]:
-
-
-
-
