@@ -1,5 +1,5 @@
 <h1 align="center">
-📄<br>README
+📄<br>README - Projeto Fundos Imobiliários
 </h1>
 
 ## Índice 
@@ -12,7 +12,6 @@
 * [Bibliotecas](#bibliotecas)
 
 # Descrição do projeto
-Projeto Fundos Imobiliários
 > Este repositório é meu projeto Python de coleta das principais informações referente à minha carteira de fundos imobiliários. Neste projeto, recebo via e-mail automaticamente valores das cotas e gráficos dos meus fundos de interesse. Criei este projeto não só pelo interesse em acompanhar meus investimentos em fundos imobiliários, mas também para treinar programação, mais especificamente automações na web (web-scrapping) e análise de dados.
 
 # Funcionalidades e Demonstração da Aplicação
