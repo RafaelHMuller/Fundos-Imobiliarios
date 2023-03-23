@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[21]:
+# # Meu Projeto Fundos Imobiliários
+
+# In[4]:
 
 
 #1 -importar as bibliotecas
@@ -23,7 +25,7 @@ import pyautogui as gui
 import os
 
 
-# In[2]:
+# In[5]:
 
 
 #2 - acessar o site da fundamentus
@@ -31,15 +33,17 @@ browser = webdriver.Chrome(service=servico, options=options)
 browser.get('https://www.fundamentus.com.br/detalhes.php?papel=RBRR11')
 
 
-# In[23]:
+# In[6]:
 
 
 #3 - acessar a base de dados .xlsx
-df = pd.read_excel(r'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\Projeto - Carteira de fiis.xlsx')
-#display(df)
+local = os.getcwd()
+
+df = pd.read_excel(fr'{local}\Projeto - Carteira de fiis.xlsx')
+display(df)
 
 
-# In[4]:
+# In[7]:
 
 
 #3 - pegar as informações dos fiis
@@ -72,7 +76,7 @@ browser.quit()
 #df.info()
 
 
-# In[5]:
+# In[8]:
 
 
 #4 - tratamento da base de dados
@@ -84,7 +88,7 @@ df = df.set_index('Fiis')
 #df.info()
 
 
-# In[6]:
+# In[9]:
 
 
 #5 - acrescentar no df: valor atual de todo o investimento
@@ -94,7 +98,7 @@ valor_total = df['Valor Atual'].sum()
 #print(f'Valor total atual da carteira: R$ {valor_total:,.2f}.')
 
 
-# In[7]:
+# In[10]:
 
 
 #6 - acrescentar no df: valor esperado de dividendos
@@ -106,7 +110,7 @@ dividendos_total = (df['Valor Dividendos Anual'].sum()) / 12
 
 # ###### Importação dos gráficos dos históricos de cotações
 
-# In[18]:
+# In[11]:
 
 
 gui.alert('NÃO TOCAR NO MOUSE OU TECLADO')
@@ -117,15 +121,15 @@ browser = webdriver.Chrome(service=servico)
 def capturar_imagem(periodo_do_grafico):
     #printar a página
     time.sleep(1)
-    browser.save_screenshot(fr'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\gráficos cotações\{fii} - {periodo_do_grafico}.png')
+    browser.save_screenshot(fr'{local}\gráficos cotações\{fii} - {periodo_do_grafico}.png')
     #abrir, editar, salvar o print
-    imagem = Image.open(fr'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\gráficos cotações\{fii} - {periodo_do_grafico}.png')
+    imagem = Image.open(fr'{local}\gráficos cotações\{fii} - {periodo_do_grafico}.png')
     left = 500
     top = 200
     right = 1320
     bottom = 800
     imagem = imagem.crop((left, top, right, bottom))
-    imagem.save(fr'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\gráficos cotações\{fii} - {periodo_do_grafico}.png')
+    imagem.save(fr'{local}\gráficos cotações\{fii} - {periodo_do_grafico}.png')
 
 # abrir os gráficos de cada fii (1 mês, 3 meses, 6 meses, 1 ano) e aplicar a função
     
@@ -150,7 +154,7 @@ for fii in df.index:
 browser.quit()
 
 
-# In[22]:
+# In[12]:
 
 
 # enviar email
@@ -169,7 +173,7 @@ path = r'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Cart
 lista_arquivos = os.listdir(path)
 #pasta_imagens = Path(r'C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\gráficos cotações')
 for arquivo in lista_arquivos:
-    caminho_anexo = fr"C:\Users\W10\Desktop\Python\Arquivos_estudo\Projetos\Meus_projetos\Carteira Fiis\gráficos cotações\{arquivo}"
+    caminho_anexo = fr"{local}\gráficos cotações\{arquivo}"
     e.Attachments.Add(str(caminho_anexo)) 
 e.Send()
 
